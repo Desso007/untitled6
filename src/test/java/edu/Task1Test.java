@@ -8,7 +8,7 @@ public class Task1Test {
 
     @Test
     public void testValidInput() {
-        assertEquals(764, Task1.videoLengthInSeconds("12:44"));
+        assertEquals(763, Task1.videoLengthInSeconds("12:43"));
     }
 
     private void assertEquals(int i, int i1) {
