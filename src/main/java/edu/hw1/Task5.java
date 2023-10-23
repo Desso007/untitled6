@@ -21,18 +21,45 @@ public class Task5 {
         return true;
     }
 
+    public static int sumAdjacentDigits(int number) {
+        String numberStr = String.valueOf(number);
+        int sum = 0;
+
+        for (int i = 0; i < numberStr.length() - 1; i++) {
+            int digit1 = Character.getNumericValue(numberStr.charAt(i));
+            int digit2 = Character.getNumericValue(numberStr.charAt(i + 1));
+            sum += digit1 + digit2;
+        }
+
+        return sum;
+    }
+
     public static boolean hasPalindromeDescendant(int number) {
         String numberStr = String.valueOf(number);
-
 
         if (isPalindromeString(numberStr)) {
             return true;
         }
 
+        int sum = sumAdjacentDigits(number);
 
-        for (int i = 1; i < numberStr.length(); i++) {
-            int leftPart = Integer.parseInt(numberStr.substring(0, i));
-            int rightPart = Integer.parseInt(numberStr.substring(i));
+        if (isPalindrome(sum)) {
+            return true;
+        }
+
+        return hasPalindromeDescendant(sum);
+    }
+
+    public static void main(String[] args) {
+        int number1 = 11211230;
+        int number2 = 13001120;
+        int number3 = 23336014;
+
+        System.out.println(hasPalindromeDescendant(number1));
+        System.out.println(hasPalindromeDescendant(number2));
+        System.out.println(hasPalindromeDescendant(number3));
+    }
+}
 
             if (leftPart > 0 && rightPart > 0 && isPalindrome(leftPart) && isPalindrome(rightPart)) {
                 return true;
