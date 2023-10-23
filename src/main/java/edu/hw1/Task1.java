@@ -13,14 +13,9 @@ public class Task1 {
             int minutes = Integer.parseInt(parts[0]);
             int seconds = Integer.parseInt(parts[1]);
 
-            if (seconds >= 60) {
+            if (seconds < 0 || seconds >= 60 || minutes <= 0) {
                 return -1;
             }
-
-            if (minutes < 0) {
-                return -1;
-            }
-
 
             return (minutes * 60) + seconds;
         } catch (NumberFormatException e) {
